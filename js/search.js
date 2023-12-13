@@ -32,8 +32,8 @@ const search = () => {
 
   const getData = (value) => {
     try {
-      // fetch("./db/dbb.json")
-        fetch("https://berry-bf3fb-default-rtdb.asia-southeast1.firebasedatabase.app/db.json")
+      fetch("./db/dbb.json")
+        // fetch("https://berry-bf3fb-default-rtdb.asia-southeast1.firebasedatabase.app/db.json")
         .then((res) => res.json())
         .then((data) => {
           const array = data.filter((good) => {
@@ -52,8 +52,6 @@ const search = () => {
       e.message()
       console.log('my error data in search');
     }
-      // return item.gender === "Womens";
-      // category ? console.log("yes") : console.log("no");
   };
 
   try {
@@ -67,37 +65,3 @@ const search = () => {
 };
 
 search();
-
-// my homework 
-
-    // output input data to the console 
-
-
-/* ######## personal notes ############################################
-
-  // input.addEventListener("input", (event) => {
-  //   console.log(event.target.value);
-  // });
-
-  //   мое решение
-  // searchBtn.addEventListener("click", () => {
-  //   console.log(input.value, "мое");
-  // });
-
-  // searchBtn.addEventListener("click", () => {
-  //   console.log(inputSearch.value, "glo");
-  // });
-
-  // searchBtn.addEventListener("click", (e) => {
-  //   console.log(e.target, "эллемент клика");
-  // });
-
-  // try {
-  //   searchBtn.addEventListener("click", () => {
-  //     console.log(input.value, "мое");
-  //   });
-  // } catch (e) {
-  //   console.dir(e.message, "return class pls");
-  // }
-
-###################################################################### */

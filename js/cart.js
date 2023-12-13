@@ -9,6 +9,9 @@ const cart = () => {
   const modalInputName = document.querySelector('.modal-input.name');
   const modalInputPhone = document.querySelector('.modal-input.phone');
 
+  const orderAction = document.querySelector('.cart-buy');
+
+
   const deleteCartItem = (id) => {
     const cart = JSON.parse(localStorage.getItem("cart"));
     const newCart = cart.filter((good) => good.id !== id);
@@ -76,7 +79,7 @@ const cart = () => {
         <td>${good.price} $</td>
         <td><button class="cart-btn-minus">-</button></td>
         <td>${good.count}</td>
-        <td><button class=" cart-btn-plus">+</button></td>
+        <td><button class="cart-btn-plus">+</button></td>
         <td>${+good.price * +good.count} $</td>
         <td><button class="cart-btn-delete">x</button></td>
       `;
@@ -105,53 +108,68 @@ const cart = () => {
       price = `${+cart.price * +cart.count}`;
       arrayPrices.push(price)
       const sum = arrayPrices.reduce((total, n) => +total + +n, 0);
-    cartTableTotal.innerHTML = `${sum} $`;
+      cartTableTotal.innerHTML = `${sum} $`;
     })
   }
   totalPrice();
 
-  const contactData = () => {
-    contact = []; 
-    modalForm.addEventListener('change', (e) => {
-      const input = e.target.value;
-      contact.push(input);
 
-      localStorage.setItem('contact', JSON.stringify(contact));
-    })
+  const formValidation = () => {
+    orderAction.onclick = function () {
+      let hasError = false;
+
+      [modalInputName, modalInputPhone].forEach(item => {
+
+        if (!item.value) {
+          item.classList.add('error');
+          hasError = true
+        } else {
+          item.classList.remove('error');
+        }
+      });
+
+      if (!hasError) {
+        sendForm();
+        [modalInputName, modalInputPhone].forEach(item => {
+          item.value = '';
+        })
+        alert('Спасибо за заказ! Мы скоро свяжемся с вами!');
+      }
+    }
   }
-  contactData(); 
+
 
   const sendForm = () => {
     const cartArray = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
-    const contact = localStorage.getItem("contact") ? JSON.parse(localStorage.getItem("contact")) : [];
 
     try {
       fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: JSON.stringify({
-        cart: cartArray,
-        contact: contact,
-        // name: "",
-        // phone: "",
-      })
+        method: "POST",
+        body: JSON.stringify({
+          cart: cartArray,
+          name: modalInputName.value,
+          phone: modalInputPhone.value,
+        })
       }).then(() => {
-        modalInputName.value = '';
-        modalInputPhone.value = '';
-        cartTableTotal.innerHTML = '0 $';
-        cartTable.innerHTML = "";
-        cart.style.display = '';
-    })
+        cleaner();
+      })
     } catch (e) {
       console.log('error post');
     }
   };
 
+  const cleaner = () => {
+    modalInputName.value = '';
+    modalInputPhone.value = '';
+    cartTableTotal.innerHTML = '0 $';
+    cartTable.innerHTML = "";
+    cart.style.display = '';
+    localStorage.removeItem('cart');
+  }
+
   modalForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    sendForm();
-    
-    localStorage.removeItem('cart');
-    localStorage.removeItem('contact');
+    formValidation();
   });
 
   cartBtn.addEventListener("click", () => {
@@ -189,15 +207,4 @@ const cart = () => {
 };
 
 cart();
-
-// my homework 
-
-    // - After submitting the form, delete the entire cart from localStorage
-
-    // - In the modal window of the cart there is a field with the total price (class="card-table__total").
-    // Calculate the cost of the entire product and output the result in this field
-
-    // - Add the name and phone number from the form to the sent data
-    
-    // - Clear the form after sending the data
 

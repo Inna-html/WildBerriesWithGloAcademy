@@ -1,5 +1,5 @@
 const getGoods = () => {
-  const links = document.querySelectorAll(".navigation-link"); //сначала получаем все ссылки из меню
+  const links = document.querySelectorAll(".navigation-link"); 
   const viewAll = document.querySelector(".more");
 
   const renderGoods = (goods) => {
@@ -30,8 +30,8 @@ const getGoods = () => {
 
   const getData = (value, category) => {
     try {
-      // fetch("./db/dbb.json")
-      fetch("https://berry-bf3fb-default-rtdb.asia-southeast1.firebasedatabase.app/db.json")
+      fetch("./db/dbb.json")
+      // fetch("https://berry-bf3fb-default-rtdb.asia-southeast1.firebasedatabase.app/db.json")
       .then((res) => res.json())
       .then((data) => {
         const array = category ? data.filter((item) => item[category] === value) : data;
@@ -71,18 +71,3 @@ const getGoods = () => {
 };
 
 getGoods();
-
-// ### personal notes ##############################################
-
-  // firebase.google.com for database
-
-  //   localStorage.setItem("goods", JSON.stringify([1, 2, 3, 4]));
-
-  //   const goods = JSON.parse(localStorage.getItem("goods"));
-  //   console.log(goods);
-
-  //   localStorage.removeItem("goods");
-  //   console.log(localStorage);
-  
-// #################################################################
-
