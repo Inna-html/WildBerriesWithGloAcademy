@@ -133,7 +133,7 @@ const cart = () => {
         [modalInputName, modalInputPhone].forEach(item => {
           item.value = '';
         })
-        alert('Спасибо за заказ! Мы скоро свяжемся с вами!');
+        alert('Thanks for the order! We will contact you soon!');
       }
     }
   }
