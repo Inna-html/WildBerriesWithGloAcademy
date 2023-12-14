@@ -32,8 +32,8 @@ const search = () => {
 
   const getData = (value) => {
     try {
-      // fetch("./db/dbb.json")
-        fetch("https://berry-bf3fb-default-rtdb.asia-southeast1.firebasedatabase.app/db.json")
+      fetch("./db/dbb.json")
+        // fetch("https://berry-bf3fb-default-rtdb.asia-southeast1.firebasedatabase.app/db.json")
         .then((res) => res.json())
         .then((data) => {
           const array = data.filter((good) => {
