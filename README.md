@@ -10,6 +10,7 @@ Intensive with GloAcademy, where I worked with:
 - worked with localStorage;
 
 After all I:
+- calculated the total cost of all selected goods;
 - received the name and phone number from the user, added it to the "body: JSON.stringify" and "post" with the selected goods;
 - cleared inputs, cart and localStorage after sending;
 - added input verification;
