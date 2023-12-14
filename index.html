@@ -17,16 +17,11 @@
   <link rel="stylesheet" href="css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- <script src="./jsChange/cart.js" defer></script> -->
-  <!-- <script src="./jsChange/getGoods.js" defer></script>
-  <script src="./jsChange/search.js" defer></script> -->
-
   <script src="./js/cart.js" defer></script>
   <script src="./js/getGoods.js" defer></script>
   <script src="./js/search.js" defer></script>
 </head>
 <!-- class="show-goods" -->
-
 <body id="body">
   <header class="container header px-4 px-md-0">
     <div class="row justify-content-between align-items-center">
@@ -585,6 +580,8 @@
     </div>
     <!-- /.container -->
   </footer>
+
+  <!-- cart -->
   <div class="overlay" id="modal-cart">
     <div class="modal">
       <header class="modal-header">
@@ -609,33 +606,38 @@
             <th colspan="2">Total</th>
           </tr>
         </thead>
-        <tbody class="cart-table__goods">
-          <!-- <tr>
-              <td>name</td>
-              <td>price$</td>
-              <td><button class="cart-btn-minus">-</button></td>
-              <td>2</td>
-              <td><button class="cart-btn-plus">+</button></td>
-              <td>10$</td>
-              <td><button class="cart-btn-delete">x</button></td>
-            </tr> -->
-        </tbody>
+        <tbody class="cart-table__goods"></tbody>
         <tfoot>
           <tr>
-            <th colspan=" 5">Total:</th>
-            <th class="card-table__total" colspan="2">10000$</th>
+            <th colspan="5">Total:</th>
+            <th class="card-table__total" colspan="2"></th>
           </tr>
         </tfoot>
       </table>
-      <form class="modal-form" action="">
-        <input class="modal-input" type="text" placeholder="Имя" name="nameCustomer" />
-        <input class="modal-input" type="text" placeholder="Телефон" name="phoneCustomer" />
-        <button class="button cart-buy" type="submit">
+      <form class="modal-form" id="order-send" action="">
+        <input class="modal-input name" type="text" placeholder="Имя" name="nameCustomer" />
+        <input class="modal-input phone" type="text" placeholder="Телефон" name="phoneCustomer" />
+        <button class="button cart-buy"  type="submit">
           <span class="button-text">Checkout</span>
         </button>
       </form>
     </div>
   </div>
+
+  <!-- alert -->
+  <div class="my-modal-alert" id="my-modal-alert">
+    <div class="container-alert">
+      <div class="content-alert">
+        <div class="alert-top">
+          <span class="check-marks">✔</span>
+        </div>
+        <h2 class="title">Thanks for the order! We will contact you soon!</h2>
+        <button class="button-alert-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+
 </body>
 
 </html>

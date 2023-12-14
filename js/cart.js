@@ -10,6 +10,8 @@ const cart = () => {
   const modalInputPhone = document.querySelector('.modal-input.phone');
 
   const orderAction = document.querySelector('.cart-buy');
+  const buttonAlertClose = document.querySelector('.button-alert-close');
+  const myModalAlert = document.querySelector('.my-modal-alert');
 
 
   const deleteCartItem = (id) => {
@@ -113,7 +115,6 @@ const cart = () => {
   }
   totalPrice();
 
-
   const formValidation = () => {
     orderAction.onclick = function () {
       let hasError = false;
@@ -133,11 +134,10 @@ const cart = () => {
         [modalInputName, modalInputPhone].forEach(item => {
           item.value = '';
         })
-        alert('Thanks for the order! We will contact you soon!');
+        myModalAlert.classList.add('open');
       }
     }
   }
-
 
   const sendForm = () => {
     const cartArray = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
@@ -189,6 +189,10 @@ const cart = () => {
     }
   });
 
+  buttonAlertClose.addEventListener("click", () => {
+    myModalAlert.classList.remove("open")
+  });
+
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       cart.style.display = "";
@@ -207,4 +211,3 @@ const cart = () => {
 };
 
 cart();
-

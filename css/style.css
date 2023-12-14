@@ -528,6 +528,98 @@ button {
     border-bottom-left-radius: 0;
 }
 
+/* ##### alert ########################################################## */
+
+.my-modal-alert {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: #00000098;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto; 
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .4s, visibility .4s;
+}
+#my-modal-alert:target {
+    opacity: 1;
+    visibility: visible;
+}
+.my-modal-alert.open {
+    visibility: visible;
+    opacity: 100;
+    transition: 0s;
+}
+.container-alert {
+    box-shadow: 0 10px 15px #1900a8;
+    position: relative; 
+    transform: scale(0);
+    transition: transform .8s;
+}
+.my-modal-alert.open .container-alert {
+    transform: scale(1);
+} 
+
+.container-alert {
+    background-color: #aaaaff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 480px;
+    border-radius: 20px;
+}
+.content-alert {
+    border-radius: 20px;
+    border: 4px inset #3838fc;
+    width: 350px;
+    height: 440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.check-marks {
+    font-size: 50px;
+    color: white;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    margin: 50px;
+    background: #1900a8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-alert-close {
+    width: 200px;
+    height: 40px;
+    padding: 10px 0px;
+    margin: 20px 0px;
+    background: #3d3199;
+    color: white;
+    border-radius: 5px;
+    border: 2px outset #03001e;
+}
+.button-alert-close:hover {
+    background: #1900a8;
+    box-shadow: #1900a8 1px 1px 10px 1px;
+}
+.title {
+    display: flex;
+    text-align: center;
+    color: rgb(32, 32, 32);
+}
+
+/* ###################################################################### */
+
 @media (max-width: 1200px) {
     .slide-1 {
         background-size: cover;
