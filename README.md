@@ -17,9 +17,6 @@ After all I:
 - the send was rejected before filling in the inputs;
 - added a pop-up window after sending.
 
-## View the website
-https://inna-html.github.io/WildBerriesWithGloAcademy/
-
 ## *License*
 
 License [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) Copyright © 2023 Inna-html
